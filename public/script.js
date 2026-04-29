@@ -1,4 +1,4 @@
-﻿const API_URL = "https://wasteproject.onrender.com/api";
+﻿const API_URL = "https://wasteproject.onrender.com";
 const STATS_URL = `${API_URL}/stats`;
 const ANALYTICS_URL = `${API_URL}/analytics`;
 
