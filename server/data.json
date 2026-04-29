@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Central Park Bin A",
+    "location": "Central Park, North Zone",
+    "level": 30,
+    "capacity": 500,
+    "lastCollected": "2026-04-23T10:30:00Z",
+    "status": "normal",
+    "lat": 40.7829,
+    "lng": -73.9654
+  },
+  {
+    "id": 2,
+    "name": "Downtown Bin B",
+    "location": "Main Street, Sector 4",
+    "level": 85,
+    "capacity": 750,
+    "lastCollected": "2026-04-22T14:15:00Z",
+    "status": "warning",
+    "lat": 40.758,
+    "lng": -73.9855
+  },
+  {
+    "id": 3,
+    "name": "Market Square Bin C",
+    "location": "Farmers Market Area",
+    "level": 100,
+    "capacity": 600,
+    "lastCollected": "2026-04-20T08:00:00Z",
+    "status": "critical",
+    "lat": 40.7505,
+    "lng": -73.9934
+  },
+  {
+    "id": 4,
+    "name": "School Zone Bin D",
+    "location": "West Elementary School",
+    "level": 55,
+    "capacity": 400,
+    "lastCollected": "2026-04-23T16:45:00Z",
+    "status": "normal",
+    "lat": 40.7614,
+    "lng": -73.9776
+  },
+  {
+    "id": 5,
+    "name": "Hospital Bin E",
+    "location": "City General Hospital",
+    "level": 72,
+    "capacity": 800,
+    "lastCollected": "2026-04-22T11:00:00Z",
+    "status": "warning",
+    "lat": 40.7549,
+    "lng": -73.984
+  },
+  {
+    "id": 6,
+    "name": "Mall Entrance Bin F",
+    "location": "City Shopping Mall",
+    "level": 95,
+    "capacity": 1000,
+    "lastCollected": "2026-04-21T19:30:00Z",
+    "status": "critical",
+    "lat": 40.7425,
+    "lng": -73.9893
+  },
+  {
+    "id": 7,
+    "name": "Metro Station Bin G",
+    "location": "Central Metro Station",
+    "level": 45,
+    "capacity": 600,
+    "lastCollected": "2026-04-23T09:00:00Z",
+    "status": "normal",
+    "lat": 40.7527,
+    "lng": -73.9772
+  },
+  {
+    "id": 8,
+    "name": "Sports Complex Bin H",
+    "location": "City Stadium",
+    "level": 88,
+    "capacity": 900,
+    "lastCollected": "2026-04-20T22:00:00Z",
+    "status": "warning",
+    "lat": 40.7465,
+    "lng": -73.998
+  },
+  {
+    "id": 9,
+    "name": "Library Bin I",
+    "location": "Public Library",
+    "level": 25,
+    "capacity": 350,
+    "lastCollected": "2026-04-24T08:30:00Z",
+    "status": "normal",
+    "lat": 40.7532,
+    "lng": -73.9822
+  },
+  {
+    "id": 10,
+    "name": "Bus Terminal Bin J",
+    "location": "Intercity Bus Station",
+    "level": 80,
+    "capacity": 850,
+    "lastCollected": "2026-04-21T15:00:00Z",
+    "status": "critical",
+    "lat": 40.7518,
+    "lng": -73.991
+  },
+  {
+    "id": 11,
+    "name": "Beach Park Bin K",
+    "location": "Sunny Beach Park",
+    "level": 60,
+    "capacity": 550,
+    "lastCollected": "2026-04-23T12:00:00Z",
+    "status": "normal",
+    "lat": 40.768,
+    "lng": -73.97
+  },
+  {
+    "id": 12,
+    "name": "Office Tower Bin L",
+    "location": "Business District Tower",
+    "level": 78,
+    "capacity": 700,
+    "lastCollected": "2026-04-22T17:30:00Z",
+    "status": "warning",
+    "lat": 40.7557,
+    "lng": -73.9762
+  }
+]

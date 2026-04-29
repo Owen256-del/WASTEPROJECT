@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Waste Management System</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Leaflet Map -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-recycle"></i>
+          <h1>Smart Waste Management</h1>
+        </div>
+        <p class="tagline">
+          Real-time Monitoring | Analytics | Route Optimization
+        </p>
+      </div>
+      <div class="header-stats">
+        <span id="live-time"></span>
+      </div>
+    </header>
+    <main class="container">
+      <!-- Stats Dashboard -->
+      <section id="stats-container" class="stats-grid"></section>
+
+      <!-- Map Section -->
+      <section class="map-section">
+        <div class="map-container">
+          <h2><i class="fas fa-map-marked-alt"></i> Real-time Bin Locations</h2>
+          <div id="map"></div>
+        </div>
+      </section>
+
+      <!-- Analytics Charts -->
+      <section class="charts-section">
+        <div class="chart-container">
+          <h2><i class="fas fa-chart-bar"></i> Fill Level Overview</h2>
+          <canvas id="wasteChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h2><i class="fas fa-chart-pie"></i> Status Distribution</h2>
+          <canvas id="statusChart"></canvas>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section class="controls">
+        <button id="show-all" class="btn primary">
+          <i class="fas fa-list"></i> All Bins
+        </button>
+        <button id="show-urgent" class="btn danger">
+          <i class="fas fa-exclamation-triangle"></i> Critical Only
+        </button>
+        <button id="sort" class="btn secondary">
+          <i class="fas fa-sort-amount-down"></i> Sort by Level
+        </button>
+      </section>
+
+      <!-- Bin Cards -->
+      <section id="bins-container" class="grid"></section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Smart Waste Management System | IoT-enabled Waste Monitoring</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
