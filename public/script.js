@@ -1,4 +1,4 @@
-﻿const API_URL = "http://localhost:3000";
+﻿const API_URL = "https://wasteproject.onrender.com/api";
 const STATS_URL = `${API_URL}/stats`;
 const ANALYTICS_URL = `${API_URL}/analytics`;
 
@@ -22,7 +22,12 @@ function getStatus(level) {
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 
 async function fetchBins() {
@@ -86,18 +91,20 @@ function renderChart(data) {
     type: "bar",
     data: {
       labels,
-      datasets: [{
-        label: "Fill Level (%)",
-        data: levels,
-        backgroundColor: colors,
-        borderRadius: 6,
-      }],
+      datasets: [
+        {
+          label: "Fill Level (%)",
+          data: levels,
+          backgroundColor: colors,
+          borderRadius: 6,
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true, max: 100 } }
+      scales: { y: { beginAtZero: true, max: 100 } },
     },
   });
 }
@@ -111,16 +118,23 @@ function renderPieChart(data) {
     type: "doughnut",
     data: {
       labels: ["Normal", "Warning", "Critical"],
-      datasets: [{
-        data: [data.normal, data.warning, data.critical],
-        backgroundColor: ["#22c55e", "#f59e0b", "#ef4444"],
-        borderWidth: 0,
-      }],
+      datasets: [
+        {
+          data: [data.normal, data.warning, data.critical],
+          backgroundColor: ["#22c55e", "#f59e0b", "#ef4444"],
+          borderWidth: 0,
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { position: "bottom", labels: { padding: 20, usePointStyle: true } } }
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: { padding: 20, usePointStyle: true },
+        },
+      },
     },
   });
 }
@@ -128,32 +142,32 @@ function renderPieChart(data) {
 function initMap() {
   const mapContainer = document.getElementById("map");
   if (!mapContainer) return;
-  
+
   // Initialize map centered on NYC
-  map = L.map("map").setView([40.7580, -73.9855], 13);
-  
+  map = L.map("map").setView([40.758, -73.9855], 13);
+
   // Add OpenStreetMap tiles
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors"
+    attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
 }
 
 function renderMap() {
   if (!map) return;
-  
+
   // Clear existing markers
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       map.removeLayer(layer);
     }
   });
-  
+
   // Add markers for each bin
   bins.forEach((bin) => {
     if (bin.lat && bin.lng) {
       const status = getStatus(bin.level);
-      const fillAmount = Math.round(bin.level / 100 * bin.capacity);
-      
+      const fillAmount = Math.round((bin.level / 100) * bin.capacity);
+
       const popupContent = `
         <div class="bin-popup">
           <h4>${bin.name}</h4>
@@ -171,11 +185,11 @@ function renderMap() {
           <span class="popup-status ${status.class}">${status.text}</span>
         </div>
       `;
-      
+
       const marker = L.marker([bin.lat, bin.lng])
         .bindPopup(popupContent)
         .addTo(map);
-      
+
       // Custom marker icon based on status
       const iconHtml = `
         <div style="
@@ -193,21 +207,25 @@ function renderMap() {
           border: 2px solid white;
         ">${bin.level}</div>
       `;
-      
-      marker.setIcon(L.divIcon({
-        html: iconHtml,
-        className: "custom-marker",
-        iconSize: [30, 30],
-        iconAnchor: [15, 15]
-      }));
+
+      marker.setIcon(
+        L.divIcon({
+          html: iconHtml,
+          className: "custom-marker",
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+        }),
+      );
     }
   });
-  
+
   // Fit bounds to show all markers
   if (bins.length > 0) {
-    const validBins = bins.filter(b => b.lat && b.lng);
+    const validBins = bins.filter((b) => b.lat && b.lng);
     if (validBins.length > 0) {
-      const group = L.featureGroup(validBins.map(b => L.marker([b.lat, b.lng])));
+      const group = L.featureGroup(
+        validBins.map((b) => L.marker([b.lat, b.lng])),
+      );
       map.fitBounds(group.getBounds().pad(0.1));
     }
   }
@@ -218,7 +236,7 @@ function renderBins(data) {
 
   data.forEach((bin) => {
     const status = getStatus(bin.level);
-    const fillAmount = Math.round(bin.level / 100 * bin.capacity);
+    const fillAmount = Math.round((bin.level / 100) * bin.capacity);
 
     const card = document.createElement("div");
     card.classList.add("card");
@@ -281,8 +299,12 @@ function attachInputEvents() {
 }
 
 showAllBtn.addEventListener("click", () => renderBins(bins));
-urgentBtn.addEventListener("click", () => renderBins(bins.filter((b) => b.level >= 80)));
-sortBtn.addEventListener("click", () => renderBins([...bins].sort((a, b) => b.level - a.level)));
+urgentBtn.addEventListener("click", () =>
+  renderBins(bins.filter((b) => b.level >= 80)),
+);
+sortBtn.addEventListener("click", () =>
+  renderBins([...bins].sort((a, b) => b.level - a.level)),
+);
 
 async function init() {
   initMap();
